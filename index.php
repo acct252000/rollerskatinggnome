@@ -80,13 +80,14 @@
     <script>
     </script>
 
-    <script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzEV_2vZYplUr-ceO0gt7F0q5y_k5eX8&v=3&callback=initMap">
-    </script>
+   
 
     <script src="js/knockout.js"></script>
     <script src="js/main.js"></script>
 
     <script src="js/jquery.min.js"></script>
+     <script defer async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkzEV_2vZYplUr-ceO0gt7F0q5y_k5eX8&v=3&callback=initMap">
+    </script>
  
 
 </body>
