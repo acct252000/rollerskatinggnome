@@ -17,7 +17,7 @@
            
             <div> <img id="gnome" src="img/gnome.png" alt="rollerskating gnome">Rollerskating Gnome</div>
                 <span id="weather_attribute" data-bind="text: weatherAttribString"></span></header>
-            <div class="test"><a href="newtrail2.php">Link to new trail</a></div>
+            <div class="test"><a href="newtrail.php">Link to new trail</a></div>
             <div id="bar">
 
 	    	

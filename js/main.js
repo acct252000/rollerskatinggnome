@@ -375,9 +375,24 @@ var ViewModel = function() {
     this.allFilter = ko.observable('');
     this.showNavBar = ko.observable(false);
     this.formValidation = ko.observable('');
+    //establish observables for new trail form
+    self.newTrailForm = {
+            name: ko.observable();
+            lat: ko.observable(0.0);
+            lng: ko.observable(0.0);
+            formAddress: ko.observable('123 Main Street, Denver, CO 12345');
+            parking_location: ko.observable();
+            parking_cost: ko.observable();
+            length: ko.observable();
+            info: ko.observable();
+            group: ko.observable();
+            web: ko.observable();
+            email: ko.observable();
+    };
+
     weatherAttribString = ko.observable("Weather information provided by the National Weather Service");
     shouldShowLogo = ko.observable(true);
-    //add listener for map bound changes
+   
    
     //add all skates to initial skatelists.
     model.skates.forEach(function(skate) {
@@ -438,6 +453,18 @@ var ViewModel = function() {
 	
         this.showAForm(false);
 
+    }
+    //submit form data from new trail to php
+    self.submitNewTrail = function(){
+        console.log("submit new trail called");
+        var data = ko.toJS({"data":self.newTrailForm});
+        console.log(data);
+        $.ajax({
+            url: "newtrail.php",
+            type: 'post',
+            data: data
+
+        });
     }
     //call to get current user location
     self.getUserLocation = function(){
