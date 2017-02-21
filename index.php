@@ -27,7 +27,7 @@ $skates = array();
 for($ri = 0; $ri < $numrows; $ri++) {
     
     $row = pg_fetch_array($result, $ri);
-    $current_skate = array("trailName"=>$row["name"],"lat"=>(float)$row["lat"],"lng"=>(float)$row["lng"], "parkingSpot"=>$row["parking_location"], "length"=>(float)$row["skate_length"], "marker"=>null, "pws"=>$row["pws"], "temperature"=>null, "windMph"=>null, "windDir"=>null, "relHumid"=>null);
+    $current_skate = array("id"=>$row["id"], "trailName"=>$row["name"],"lat"=>(float)$row["lat"],"lng"=>(float)$row["lng"], "parkingSpot"=>$row["parking_location"], "length"=>(float)$row["skate_length"], "marker"=>null, "pws"=>$row["pws"], "temperature"=>null, "windMph"=>null, "windDir"=>null, "relHumid"=>null);
     array_push($skates, $current_skate);
     }
 

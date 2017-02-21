@@ -716,6 +716,7 @@ var view = {
                 currentRelativeHumidity = skate.relHumid;
                 skateLength = skate.length;
 
+
             }
 
         });
@@ -726,7 +727,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b>' + marker.title + '</b><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com/'+skate.id+ '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
