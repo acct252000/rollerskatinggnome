@@ -13,33 +13,27 @@ $connection_string = 'dbname='.ltrim($dbopts["path"],'/').' host='.$dbopts["host
 
 $dbconn = pg_connect($connection_string);
 
-$result = pg_exec($dbconn, "select * from newskates");
+$result = pg_exec($dbconn, "select * from currentskates");
 $numrows = pg_numrows($result);
+
+$skates = array();
+
+for($ri = 0; $ri < $numrows; $ri++) {
+    
+    $row = pg_fetch_array(($result, $ri);
+    $current_skate = array("trailName"=>$row["name"],"lat"=>$row["lat"],"lng"=>$row["lng"], "parkingSpot"=>$row["parking_location"], "length"=>$row["skate_length"], "marker"=>null, "pws"=>$row["pws"], "temperature"=>null, "windMph"=>null, "windDir"=>null, "relHumid"=>null);
+    array_push($skates, $current_skate);
+	}
+
+pg_close($dbconn);
+
 ?>
 
+<script type="text/javascript">
+  var skate_data = <?php echo json_encode($skates); ?>; 
+  console.log(skate_data[0]);
+</script>
 
-<table border="1">
-  <tr>
-   <th>Last name</th>
-   <th>First name</th>
-   <th>ID</th>
-  </tr>
-  <?php
-
-   // Loop on rows in the result set.
-
-   for($ri = 0; $ri < $numrows; $ri++) {
-    echo "<tr>\n";
-    $row = pg_fetch_array($result, $ri);
-    echo " <td>", $row["name"], "</td>
-   <td>", $row["lat"], "</td>
-   <td>", $row["lng"], "</td>
-  </tr>
-  ";
-   }
-   pg_close($link);
-  ?>
-  </table>
 
   </body>
 
