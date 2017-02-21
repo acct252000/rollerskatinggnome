@@ -357,7 +357,7 @@ var weatherAttribString;
 var shouldShowLogo;
 
 //viewModel section using knockoutjs
-var ViewModel = function() {
+var ViewModel = function(skate_data) {
 
     var self = this;
     //establish observable array for list of skates and observables for other variables  
@@ -377,17 +377,17 @@ var ViewModel = function() {
     this.formValidation = ko.observable('');
     //establish observables for new trail form
     self.newTrailForm = {
-            name: ko.observable();
-            lat: ko.observable(0.0);
-            lng: ko.observable(0.0);
-            formAddress: ko.observable('123 Main Street, Denver, CO 12345');
-            parking_location: ko.observable();
-            parking_cost: ko.observable();
-            length: ko.observable();
-            info: ko.observable();
-            group: ko.observable();
-            web: ko.observable();
-            email: ko.observable();
+            name: ko.observable(),
+            lat: ko.observable(0.0),
+            lng: ko.observable(0.0),
+            formAddress: ko.observable('123 Main Street, Denver, CO 12345'),
+            parking_location: ko.observable(),
+            parking_cost: ko.observable(),
+            length: ko.observable(),
+            info: ko.observable(),
+            group: ko.observable(),
+            web: ko.observable(),
+            email: ko.observable()
     };
 
     weatherAttribString = ko.observable("Weather information provided by the National Weather Service");
@@ -395,7 +395,7 @@ var ViewModel = function() {
    
    
     //add all skates to initial skatelists.
-    model.skates.forEach(function(skate) {
+    skate_data.forEach(function(skate) {
         self.skateList.push(skate);
 	self.allSkateList.push(skate);
 
@@ -492,8 +492,8 @@ var ViewModel = function() {
     self.filterSkateLocation = function() {
         
         self.skateList.removeAll();
-        model.skates.forEach(function(skate) {
-            if (skate.location.lat > sw.lat() && skate.location.lat < ne.lat() && skate.location.lng < ne.lng() && skate.location.lng > sw.lng()) {
+        skate_data.forEach(function(skate) {
+            if (skate.lat > sw.lat() && skate.lat < ne.lat() && skate.lng < ne.lng() && skate.lng > sw.lng()) {
                 skate.marker.setMap(map);
                 self.skateList.push(skate);
             } else {
@@ -524,7 +524,7 @@ var ViewModel = function() {
         }
         this.formValidation('');
         self.skateList.removeAll();
-        model.skates.forEach(function(skate) {
+        skate_data.forEach(function(skate) {
             if (skate.length >= minNo && skate.length <= maxNo) {
                 skate.marker.setMap(map);
                 self.skateList.push(skate);
@@ -537,7 +537,7 @@ var ViewModel = function() {
     self.unFilterResults = function() {
         this.formValidation('');
         self.skateList.removeAll();
-        model.skates.forEach(function(skate) {
+        skate_data.forEach(function(skate) {
             skate.marker.setMap(map);
             self.skateList.push(skate);
         });
@@ -550,7 +550,7 @@ var ViewModel = function() {
             skateNames.push(skate.trailName);
             console.log(skateNames);
         });
-        model.skates.forEach(function(skate) {
+        skate_data.forEach(function(skate) {
             if (skateNames.indexOf(skate.trailName) > -1) {
                 skate.marker.setMap(map);
             } else {
@@ -613,7 +613,7 @@ var form_geocoder;
 var bounds;
 var ne;
 var sw;
-var currentViewModel = new ViewModel();
+var currentViewModel = new ViewModel(skate_data);
 
 //set Timeout function to return error message if google is not available
 var mapsTimeout = setTimeout(function() {
@@ -624,7 +624,7 @@ var mapsTimeout = setTimeout(function() {
 }, 5000);
 
 /*initialize google map passing in map coordinates from model and set markers based on information
-in model.skates*/
+in skate_data*/
 function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), model.mapCoordinates);
@@ -638,9 +638,12 @@ function initMap() {
 	});
     var markers = [];
     model.infoWindow = new google.maps.InfoWindow();
-    model.skates.forEach(function(skate) {
+    var latlng = {lat: 0, lng: 0};
+    skate_data.forEach(function(skate) {
+        latlng.lat = skate.lat;
+        latlng.lng = skate.lng;
         var marker = new google.maps.Marker({
-            position: skate.location,
+            position: latlng,
             title: skate.trailName,
             map: map
         });
@@ -704,7 +707,7 @@ var view = {
         var currentRelativeHumidity;
         var skateLength;
 
-        model.skates.forEach(function(skate) {
+        skate_data.forEach(function(skate) {
 
             if (marker == skate.marker) {
                 currentTemp = skate.temperature;
