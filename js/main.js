@@ -715,6 +715,7 @@ var view = {
                 currentWindDir = skate.windDir;
                 currentRelativeHumidity = skate.relHumid;
                 skateLength = skate.length;
+                skate_number = skate.id;
 
 
             }
@@ -727,7 +728,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com/'+skate.id+ '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com/'+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
