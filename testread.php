@@ -20,7 +20,7 @@ $skates = array();
 
 for($ri = 0; $ri < $numrows; $ri++) {
     
-    $row = pg_fetch_array(($result, $ri);
+    $row = pg_fetch_array($result, $ri);
     $current_skate = array("trailName"=>$row["name"],"lat"=>$row["lat"],"lng"=>$row["lng"], "parkingSpot"=>$row["parking_location"], "length"=>$row["skate_length"], "marker"=>null, "pws"=>$row["pws"], "temperature"=>null, "windMph"=>null, "windDir"=>null, "relHumid"=>null);
     array_push($skates, $current_skate);
 	}
