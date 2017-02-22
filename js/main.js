@@ -403,7 +403,7 @@ var ViewModel = function(skate_data) {
     });
     //set current skate
     if(current_skate_id){
-        skate_data.forEach(function(skate)){
+        skate_data.forEach(function(skate){
             if (skate_data.id == current_skate_id){
                 this.currentSkate = skate;
             }
