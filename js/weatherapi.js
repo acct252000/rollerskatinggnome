@@ -11,7 +11,7 @@ function loadData() {
 
     skate_data.forEach(function(skate) {
 
-        var weatherUrl = 'http://forecast.weather.gov/MapClick.php?lat=' + skate.location.lat +'&lon=' + skate.location.lng + '&FcstType=json';
+        var weatherUrl = 'http://forecast.weather.gov/MapClick.php?lat=' + skate.lat +'&lon=' + skate.lng + '&FcstType=json';
 
         /*this function calls the api to forecast.weather.gov and parses the temperature, windMph, windDir, and relative Humidity from the response.  If the
         temperature string is not as expected, the data items remain null.  Lastly, the timeout called above is cleared if the response is successful.*/

@@ -715,8 +715,7 @@ var view = {
         var currentWindDir;
         var currentRelativeHumidity;
         var skateLength;
-        //number of seconds from Jan 1 1970
-        var currentTime = new Date.getTime()/1000;
+      
 
         skate_data.forEach(function(skate) {
 
@@ -727,7 +726,7 @@ var view = {
                 currentRelativeHumidity = skate.relHumid;
                 skateLength = skate.length;
                 skate_number = skate.id;
-                skate.weather_time = currentTime;
+                
 
 
             }
