@@ -626,12 +626,14 @@ var sw;
 var currentViewModel = new ViewModel(skate_data);
 
 //set Timeout function to return error message if google is not available
+if (!skate_detail){
 var mapsTimeout = setTimeout(function() {
     if (!window.google || !window.google.maps) {
         var element = document.getElementById('map');
         element.innerHTML = 'So sorry, the map did not load. Please refresh to try again.  Peace, skate, love my brother or sister.';
     }
 }, 5000);
+}
 
 /*initialize google map passing in map coordinates from model and set markers based on information
 in skate_data*/
@@ -740,7 +742,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com/traildetail.php?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="http://blooming-badlands-10202.herokuapp.com/traildetail.php?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
@@ -766,10 +768,10 @@ var view = {
         var htmlString = '';
 
         if (currentTemp) {
-            currentTempString = currentTemp + '<br>';
+            currentTempString = 'Temperature: ' + currentTemp + '<br>';
         }
         if (currentWindMph) {
-            currentWindMphString = 'Wind ' + currentWindMph + ' MPH ';
+            currentWindMphString = 'Wind:' + currentWindMph + ' MPH ';
         }
         if (currentWindDir) {
             currentWindDirString = currentWindDir + '<br>';
