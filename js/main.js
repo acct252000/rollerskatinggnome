@@ -406,6 +406,7 @@ var ViewModel = function(skate_data) {
         skate_data.forEach(function(skate){
             if (skate_data.id == current_skate_id){
                 this.currentSkate = skate;
+                console.log(this.currentSkate.trailName);
             }
         });
     }
