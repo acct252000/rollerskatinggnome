@@ -375,6 +375,7 @@ var ViewModel = function(skate_data) {
     this.allFilter = ko.observable('');
     this.showNavBar = ko.observable(false);
     this.formValidation = ko.observable('');
+    this.currentSkate = ko.observableArray([]);
     //establish observables for new trail form
     self.newTrailForm = {
             name: ko.observable(),
@@ -400,6 +401,14 @@ var ViewModel = function(skate_data) {
 	self.allSkateList.push(skate);
 
     });
+    //set current skate
+    if(current_skate_id){
+        skate_data.forEach(function(skate)){
+            if (skate_data.id == current_skate_id){
+                this.currentSkate = skate;
+            }
+        }
+    }
     //reset map to user input zipcode or city, state
     self.resetMap = function(){
         var address;
@@ -706,6 +715,8 @@ var view = {
         var currentWindDir;
         var currentRelativeHumidity;
         var skateLength;
+        //number of seconds from Jan 1 1970
+        var currentTime = new Date.getTime()/1000;
 
         skate_data.forEach(function(skate) {
 
@@ -716,6 +727,7 @@ var view = {
                 currentRelativeHumidity = skate.relHumid;
                 skateLength = skate.length;
                 skate_number = skate.id;
+                skate.weather_time = currentTime;
 
 
             }
@@ -728,7 +740,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com/'+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="https://blooming-badlands-10202.herokuapp.com?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {

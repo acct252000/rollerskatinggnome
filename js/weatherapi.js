@@ -9,7 +9,7 @@ function loadData() {
         shouldShowLogo(false);
     }, 8000);
 
-    model.skates.forEach(function(skate) {
+    skate_data.forEach(function(skate) {
 
         var weatherUrl = 'http://forecast.weather.gov/MapClick.php?lat=' + skate.location.lat +'&lon=' + skate.location.lng + '&FcstType=json';
 
