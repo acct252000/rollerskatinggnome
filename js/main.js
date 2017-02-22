@@ -318,7 +318,7 @@ var model = {
             "windDir": null,
             "relHumid": null
   },
-	 {
+     {
             "location": {
                 "lat": 32.7775222,
                 "lng": -97.1004047
@@ -333,7 +333,7 @@ var model = {
             "windDir": null,
             "relHumid": null
   },
-	{
+    {
             "location": {
                 "lat": 33.020482,
                 "lng": -96.8713641
@@ -348,7 +348,7 @@ var model = {
             "windDir": null,
             "relHumid": null
   }
-	
+    
 
   ]
 };
@@ -375,7 +375,18 @@ var ViewModel = function(skate_data) {
     this.allFilter = ko.observable('');
     this.showNavBar = ko.observable(false);
     this.formValidation = ko.observable('');
-    this.currentSkate = ko.observableArray([]);
+    this.currentSkate = {
+        name: ko.observable('not updated'),
+        parking_location: ko.observable(),
+        parking_cost: ko.observable(),
+        length: ko.observable(0.0),
+        skate_info: ko.observable(),
+        group_skates: ko.observable(),
+        temperature: ko.observable('Loading...'),
+        windMph: ko.observable(),
+        windDir: ko.observable(),
+        relHumid: ko.observable()
+    };
     //establish observables for new trail form
     self.newTrailForm = {
             name: ko.observable(),
@@ -395,72 +406,92 @@ var ViewModel = function(skate_data) {
     shouldShowLogo = ko.observable(true);
    
    
-    //add all skates to initial skatelists.
+    //add all skates to initial skatelists and set current skate.
     skate_data.forEach(function(skate) {
         self.skateList.push(skate);
-	self.allSkateList.push(skate);
+        self.allSkateList.push(skate);
+        if (skate_detail){
+            if(skate.id == current_skate_id){
+                self.currentSkate.name(skate.trailName);
+                self.currentSkate.parking_location(skate.parkingSpot);
+                self.currentSkate.parking_cost(skate.parkingCost);
+                self.currentSkate.length(skate.length);
+                self.currentSkate.skate_info(skate.skateInfo);
+                self.currentSkate.group_skates(skate.groupSkates);
+            }
+          
+            
+        }
 
     });
-    //set current skate
-    if(skate_detail){
-        skate_data.forEach(function(skate){
-            if (skate_data.id == current_skate_id){
-                this.currentSkate = skate;
-                console.log(this.currentSkate.trailName);
+    self.updateWeatherInfo = function(){
+            skate_data.forEach(function(skate) {
+        if (skate_detail){
+            if(skate.id == current_skate_id){
+                self.currentSkate.temperature(skate.temperature);
+                self.currentSkate.windDir(skate.windDir);
+                self.currentSkate.windMph(skate.windMph);
+                self.currentSkate.relHumid(skate.relHumid);
+               
             }
-        });
+          
+            
+        }
+
+    });
     }
+    
     //reset map to user input zipcode or city, state
     self.resetMap = function(){
         var address;
          
-	if (this.zipCode()){
-		address = this.zipCode();
-	} 
+    if (this.zipCode()){
+        address = this.zipCode();
+    } 
         geocoder.geocode({'address':address}, function(results, status){
         if (status == 'OK'){
-		map.setCenter(results[0].geometry.location);
-                	
-	} else {
-		alert('Geocode was not successful for the following reason: ' + status)
-	}
+        map.setCenter(results[0].geometry.location);
+                    
+    } else {
+        alert('Geocode was not successful for the following reason: ' + status)
+    }
 
-	});
+    });
 
     }
     //callback to update latitude and longitude observables from form geocoding
     self.updateLtLg = function(currentLat, currentLng){
 
-	console.log(currentLat);
-	console.log(currentLng);
-	this.lat(currentLat);
-	this.lng(currentLng);
-	
-	}
+    console.log(currentLat);
+    console.log(currentLng);
+    this.lat(currentLat);
+    this.lng(currentLng);
+    
+    }
     //geoCode address input into form
     self.geoCodeInput = function(){
         var address;
-	var currentLat;
+    var currentLat;
         var currentLng;
-	
+    
          
-	if (this.formAddress()){
-		address = this.formAddress();
-		
-	} 
+    if (this.formAddress()){
+        address = this.formAddress();
+        
+    } 
         form_geocoder.geocode({'address':address}, function(results, status){
         if (status == 'OK'){
-		console.log("status ok");
-		currentLat = results[0].geometry.location.lat();
-		currentLng = results[0].geometry.location.lng();
-		self.updateLtLg(currentLat, currentLng);
-		             	
-	} else {
-		alert('Geocode was not successful for the following reason: ' + status)
-	}
+        console.log("status ok");
+        currentLat = results[0].geometry.location.lat();
+        currentLng = results[0].geometry.location.lng();
+        self.updateLtLg(currentLat, currentLng);
+                        
+    } else {
+        alert('Geocode was not successful for the following reason: ' + status)
+    }
 
-	});
-	
+    });
+    
         this.showAForm(false);
 
     }
@@ -478,25 +509,25 @@ var ViewModel = function(skate_data) {
     }
     //call to get current user location
     self.getUserLocation = function(){
-	if (navigator.geolocation) {
-        	navigator.geolocation.getCurrentPosition(self.updatePosition);
-    	} 
+    if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(self.updatePosition);
+        } 
 
 
 
     }
     //callback to get user location from web service
     self.updatePosition = function(position){
-	webLat = position.coords.latitude;
-	webLng = position.coords.longitude;
-	self.positionCallback(webLat, webLng);
+    webLat = position.coords.latitude;
+    webLng = position.coords.longitude;
+    self.positionCallback(webLat, webLng);
 
-	}
+    }
     //callback to update ko observables for web service user location
     self.positionCallback = function(lat, lng){
-	this.lat(lat);
-	this.lng(lng);
-	}
+    this.lat(lat);
+    this.lng(lng);
+    }
 
     /*reset skateList to those visible on map*/
     self.filterSkateLocation = function() {
@@ -576,7 +607,7 @@ var ViewModel = function(skate_data) {
         var filter = this.filter().toLowerCase();
         if (!filter) {
          
-		  
+          
             return this.skateList();
 
         } else {
@@ -591,7 +622,7 @@ var ViewModel = function(skate_data) {
         var allFilter = this.allFilter().toLowerCase();
         if (!allFilter) {
          
-		  
+          
             return;
 
         } else {
@@ -645,9 +676,9 @@ function initMap() {
         bounds = map.getBounds();
         ne = bounds.getNorthEast();
         sw = bounds.getSouthWest();
-	currentViewModel.filterSkateLocation();
+    currentViewModel.filterSkateLocation();
         console.log("bounds changed fired here!");
-	});
+    });
     var markers = [];
     model.infoWindow = new google.maps.InfoWindow();
     var latlng = {lat: 0, lng: 0};
@@ -686,8 +717,6 @@ function initMapForm() {
   
 
 }
-
-
 
 
 //intialize with knockout
@@ -742,7 +771,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b><a href="http://blooming-badlands-10202.herokuapp.com/traildetail.php?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="traildetail.php?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {

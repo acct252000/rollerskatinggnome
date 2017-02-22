@@ -41,8 +41,6 @@ pg_close($dbconn);
   var skate_data = <?php echo json_encode($skates); ?>; 
   var current_skate_id = <?php echo $current_skate_id; ?>;
   var skate_detail = true;
-  console.log(skate_data[0]);
-  console.log(current_skate_id);
 </script>
 
         <header>
@@ -72,7 +70,7 @@ pg_close($dbconn);
 </div>
    
    <div id="main_detail">
-		<div class="col-12"><h1 data-bind="text: currentSkate.trailName"></h1></div>
+		<div class="col-12"><h1 data-bind="text: currentSkate.name"></h1></div>
 		<div class="col-12">
 
 
@@ -105,10 +103,10 @@ pg_close($dbconn);
      		
 			<h3>Weather Information</h3>
 			<table>
-			<tr><td>Temperature:</td><td class="weatherinfo"> 40</td></tr>
-                        <tr><td>Wind Speed: </td><td class="weatherinfo">10</td></tr>
-			<tr><td>Wind Direction: </td><td class="weatherinfo">NE </td></tr>
-			<tr><td>Relative Humidity: </td><td class="weatherinfo">25</td></tr>
+			<tr><td>Temperature:</td><td class="weatherinfo" data-bind="text: currentSkate.temperature"> Loading...</td></tr>
+                        <tr><td>Wind Speed: </td><td class="weatherinfo" data-bind="text: currentSkate.windMph"></td></tr>
+			<tr><td>Wind Direction: </td><td class="weatherinfo" data-bind="text: currentSkate.windDir"> </td></tr>
+			<tr><td>Relative Humidity: </td><td class="weatherinfo" data-bind="text: currentSkate.relHumid"></td></tr>
 			</table>
 		<h3>Ratings:</h3>
 		</div>
@@ -117,14 +115,14 @@ pg_close($dbconn);
 		<div class="col-12">
 		<table>
 		<tr><td>
-		<span class="detail-info">Parking Location: </span></td><td>Outside police station</td></tr>
-		<tr><td><span class="detail-info">Charge for Parking:</span></td><td>None</td></tr>
-		<tr><td><span class="detail-info">Length:</span></td><td>Nine miles</td></tr>
+		<span class="detail-info">Parking Location: </span></td><td data-bind="text: currentSkate.parking_location"></td></tr>
+		<tr><td><span class="detail-info">Charge for Parking:</span></td><td data-bind="text: currentSkate.parking_cost"></td></tr>
+		<tr><td><span class="detail-info">Length:</span></td><td data-bind="text: currentSkate.length"></td></tr>
 		</table>
 		<span class="detail-info">Need to Know Information:</span><br>
-		Relevant information goes here blah blah blah blah<br>
+		<span data-bind="text: currentSkate.skate_info"></span><br>
 		<span class="detail-info">Scheduled Group Skates:</span><br>
-		Pegasus Flyers skate here the occasional Saturday.
+		<span data-bind="text: currentSkate.group_skates"></span>
 		</div>
 		<div class="col-12"><hr class="corners">
 		</div>
