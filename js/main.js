@@ -407,7 +407,7 @@ var ViewModel = function(skate_data) {
             if (skate_data.id == current_skate_id){
                 this.currentSkate = skate;
             }
-        }
+        });
     }
     //reset map to user input zipcode or city, state
     self.resetMap = function(){
