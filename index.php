@@ -37,6 +37,7 @@ pg_close($dbconn);
 
 <script type="text/javascript">
   var skate_data = <?php echo json_encode($skates); ?>; 
+  var skate_detail = false;
   console.log(skate_data[0]);
 </script>
 

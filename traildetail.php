@@ -40,6 +40,7 @@ pg_close($dbconn);
 <script type="text/javascript">
   var skate_data = <?php echo json_encode($skates); ?>; 
   var current_skate_id = <?php echo $current_skate_id; ?>;
+  var skate_detail = true;
   console.log(skate_data[0]);
   console.log(current_skate_id);
 </script>
