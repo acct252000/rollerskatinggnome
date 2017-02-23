@@ -1,13 +1,4 @@
-<?php
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$app->register(new Herrera\Pdo\PdoServiceProvider(),
-               array(
-                   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
-                   'pdo.username' => $dbopts["user"],
-                   'pdo.password' => $dbopts["pass"]
-               )
-);
-?>
+
 <!DOCTYPE html>
 <html>
 
@@ -37,11 +28,7 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
 </div>
 
 <h1 id="form_title">Suggest a New Trail</h1>
-<?php
-echo "this is php";
-echo var_dump($_POST);
-
-?>
+<h2 data-bind="text: formMessage"></h2>
 <div id="form_detail" class="corners">
 	<form id="trail_form" action="newtrail.php"  data-bind="submit: submitNewTrail" method="POST">
 	<label for="name">Trail Name:</label><br/>

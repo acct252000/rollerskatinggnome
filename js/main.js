@@ -402,6 +402,7 @@ var ViewModel = function(skate_data) {
             web: ko.observable(),
             email: ko.observable()
     };
+    self.formMessage = ko.observable('form not submitted');
 
     weatherAttribString = ko.observable("Weather information provided by the National Weather Service");
     shouldShowLogo = ko.observable(true);
@@ -504,10 +505,15 @@ var ViewModel = function(skate_data) {
         console.log("submit new trail called");
         var data = ko.toJS({"data":self.newTrailForm});
         console.log(data);
+        var message = '';
         $.ajax({
-            url: "newtrail.php",
+            url: "newtrailprocessing.php",
             type: 'post',
-            data: data
+            data: data,
+            success: function(response) {
+                self.formMessage(response.message);
+
+            }
 
         });
     }
