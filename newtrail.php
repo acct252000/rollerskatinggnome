@@ -13,7 +13,33 @@
 </head>
 
 <body>
+<?php
 
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$connection_string = 'dbname='.ltrim($dbopts["path"],'/').' host='.$dbopts["host"].' port='.$dbopts["port"].' user='.$dbopts["user"].' password='.$dbopts["pass"];
+
+$dbconn = pg_connect($connection_string);
+
+$result = pg_exec($dbconn, "select * from currentskates");
+$numrows = pg_numrows($result);
+
+$skates = array();
+
+for($ri = 0; $ri < $numrows; $ri++) {
+    
+    $row = pg_fetch_array($result, $ri);
+    $current_skate = array("id"=>$row["id"], "trailName"=>$row["name"],"lat"=>(float)$row["lat"],"lng"=>(float)$row["lng"], "parkingSpot"=>$row["parking_location"], "length"=>(float)$row["skate_length"], "marker"=>null, "pws"=>$row["pws"], "temperature"=>null, "windMph"=>null, "windDir"=>null, "relHumid"=>null, "weather_time"=> null);
+    array_push($skates, $current_skate);
+    }
+
+pg_close($dbconn);
+
+?>
+
+<script type="text/javascript">
+  var skate_data = <?php echo json_encode($skates); ?>; 
+  var skate_detail = false;
+</script>
         <header>
            
             <div> <a href="index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
