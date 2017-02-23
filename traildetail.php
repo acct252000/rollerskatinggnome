@@ -58,7 +58,7 @@ pg_close($dbconn);
   var skate_data = <?php echo json_encode($skates); ?>; 
   var current_skate_id = <?php echo $current_skate_id; ?>;
   var skate_detail = true;
-  var primary_picture = <?php echo $primary_picture_path; ?>;
+  var primary_picture = "<?php echo $primary_picture_path; ?>";
   var other_pictures = <?php echo json_encode($other_skate_pictures); ?>; 
   console.log(other_pictures[0]);
 
