@@ -41,9 +41,7 @@ $other_skate_pictures = array();
 
 for ($rb = 0; $rb < $numpicrows; $rb++){
 	$picrow = pg_fetch_array($picture_result, $rb);
-	echo $picrow["key_picture"];
-	echo (boolean)$picrow["key_picture"];
-	if ((boolean)$picrow["key_picture"]){
+	if ($picrow["key_picture"]=="t"){
 		$primary_picture_path = $picrow["picture_path"];
 	} else {
 		$skate_picture  = array("picture_path"=>$picrow["picture_path"]);
