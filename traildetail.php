@@ -41,7 +41,7 @@ $other_skate_pictures = array();
 
 for ($rb = 0; $rb < $numpicrows; $rb++){
 	$picrow = pg_fetch_array($picture_result, $rb);
-	if ($picrow["key_picture"]){
+	if ((boolean)$picrow["key_picture"]){
 		$primary_picture_path = $picrow["picture_path"];
 	} else {
 		$skate_picture  = array("picture_path"=>$picrow["picture_path"]);
@@ -95,32 +95,7 @@ pg_close($dbconn);
 		<div class="col-12">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                     <img class="skate-picture corners" data-bind="attr:{src: primaryPicture}" alt="picture of skate">
+                     <img class="skate-picture corners" data-bind="attr:{src: currentSkate.primaryPicture}" alt="picture of skate">
      		
 			<h3>Weather Information</h3>
 			<table>
