@@ -385,7 +385,8 @@ var ViewModel = function(skate_data) {
         temperature: ko.observable('Loading...'),
         windMph: ko.observable(),
         windDir: ko.observable(),
-        relHumid: ko.observable()
+        relHumid: ko.observable(),
+        primaryPicture: ko.observable()
     };
     //establish observables for new trail form
     self.newTrailForm = {
@@ -424,6 +425,9 @@ var ViewModel = function(skate_data) {
         }
 
     });
+    if(skate_detail){
+        self.currentSkate.primaryPicture(primary_picture);
+    }
     self.updateWeatherInfo = function(){
             skate_data.forEach(function(skate) {
         if (skate_detail){

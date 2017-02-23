@@ -19,8 +19,11 @@ $connection_string = 'dbname='.ltrim($dbopts["path"],'/').' host='.$dbopts["host
 
 $dbconn = pg_connect($connection_string);
 $query_string = "select * from currentskates";
+$picture_query_string = "select * from currentskatepictures WHERE skate_id =".$_GET["skate"];
 $result = pg_exec($dbconn, $query_string);
+$picture_result = pg_exec($dbconn, $picture_query_string);
 $numrows = pg_numrows($result);
+$numpicrows = pg_numrows($picture_result);
 
 $skates = array();
 $current_skate_id = $_GET["skate"];
@@ -33,6 +36,20 @@ for($ri = 0; $ri < $numrows; $ri++) {
     
     }
 
+$primary_picture_path = '';
+$other_skate_pictures = array();
+
+for ($rb = 0; $rb < $numpicrows; $rb++){
+	$picrow = pg_fetch_array($picture_result, $rb);
+	if ($picrow["key_picture"]){
+		$primary_picture_path = $picrow["picture_path"];
+	} else {
+		$skate_picture  = array("picture_path"=>$picrow["picture_path"]);
+		array_push($other_skate_pictures, $skate_picture);
+	}
+
+}
+
 pg_close($dbconn);
 
 ?>
@@ -41,6 +58,10 @@ pg_close($dbconn);
   var skate_data = <?php echo json_encode($skates); ?>; 
   var current_skate_id = <?php echo $current_skate_id; ?>;
   var skate_detail = true;
+  var primary_picture = <?php echo $primary_picture_path; ?>;
+  var other_pictures = <?php echo json_encode($other_skate_pictures); ?>; 
+  console.log(other_pictures[0]);
+
 </script>
 
         <header>
@@ -99,7 +120,7 @@ pg_close($dbconn);
 
 
 
-                     <img class="skate-picture corners" src="img/app1.jpg" alt="picture of skate">
+                     <img class="skate-picture corners" data-bind="attr:{src: primaryPicture}" alt="picture of skate">
      		
 			<h3>Weather Information</h3>
 			<table>
