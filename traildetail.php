@@ -41,6 +41,8 @@ $other_skate_pictures = array();
 
 for ($rb = 0; $rb < $numpicrows; $rb++){
 	$picrow = pg_fetch_array($picture_result, $rb);
+	echo $picrow["key_picture"];
+	echo (boolean)$picrow["key_picture"];
 	if ((boolean)$picrow["key_picture"]){
 		$primary_picture_path = $picrow["picture_path"];
 	} else {
@@ -113,7 +115,7 @@ pg_close($dbconn);
 		<tr><td>
 		<span class="detail-info">Parking Location: </span></td><td data-bind="text: currentSkate.parking_location"></td></tr>
 		<tr><td><span class="detail-info">Charge for Parking:</span></td><td data-bind="text: currentSkate.parking_cost"></td></tr>
-		<tr><td><span class="detail-info">Length:</span></td><td data-bind="text: currentSkate.length"></td></tr>
+		<tr><td><span class="detail-info">Length in Miles:</span></td><td data-bind="text: currentSkate.length"></td></tr>
 		</table>
 		<span class="detail-info">Need to Know Information:</span><br>
 		<span data-bind="text: currentSkate.skate_info"></span><br>
