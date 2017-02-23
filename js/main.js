@@ -357,7 +357,7 @@ var weatherAttribString;
 var shouldShowLogo;
 
 //viewModel section using knockoutjs
-var ViewModel = function(skate_data) {
+var ViewModel = function() {
 
     var self = this;
     //establish observable array for list of skates and observables for other variables  
@@ -505,7 +505,6 @@ var ViewModel = function(skate_data) {
         console.log("submit new trail called");
         var data = ko.toJS({"data":self.newTrailForm});
         console.log(data);
-        var message = '';
         $.ajax({
             url: "newtrailprocessing.php",
             type: 'post',
@@ -664,7 +663,7 @@ var form_geocoder;
 var bounds;
 var ne;
 var sw;
-var currentViewModel = new ViewModel(skate_data);
+var currentViewModel = new ViewModel();
 
 //set Timeout function to return error message if google is not available
 if (!skate_detail){
