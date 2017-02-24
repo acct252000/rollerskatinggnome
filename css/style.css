@@ -369,6 +369,16 @@ clear: both;
 }
 
 
+.new_skate_link{
+  margin: auto;
+  padding: 10px;
+  width: 85%;
+}
+
+.new_skate_link a{
+  color: #fff;
+}
+
 /*new trail form formatting*/
 
 .form_title {

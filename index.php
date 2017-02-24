@@ -44,7 +44,7 @@ pg_close($dbconn);
            
             <div> <img id="gnome" src="img/gnome.png" alt="rollerskating gnome">Rollerskating Gnome</div>
                 <span id="weather_attribute" data-bind="text: weatherAttribString"></span></header>
-            <div class="test"><a href="newtrail.php">Link to new trail</a></div>
+         
             <div id="bar">
 
 	    	
@@ -87,6 +87,10 @@ pg_close($dbconn);
 	   
 	</form>
 	</div>
+     <hr>
+     <div class="new_skate_link">
+    <a href="https://http://blooming-badlands-10202.herokuapp.com/newtrail.php">Suggest a New Skate!</a>
+    </div>
         <div id="menu_arrow"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" data-bind="click: hideMenu"></span></div>
     </nav>
 

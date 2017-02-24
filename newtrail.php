@@ -47,10 +47,16 @@ pg_close($dbconn);
             <div id="bar_detail">
 
 	    	
-            <form> </span>
+          
 	    <span id="all_filter_detail"><label for="all-filter">Search All Skates:</label><span class="glyphicon glyphicon-search header_icon" aria-hidden="true"></span>
 	<input type="text"  placeholder="Any trail" data-bind="value: allFilter, valueUpdate: 'afterkeydown'" /></span>
         
+</div>
+<div class="all_skates_nav corners" data-bind="if: allFilteredSkates">
+
+<ul data-bind="foreach: allFilteredSkates" class="allskatelinks" id="myallskatelinks">
+            <li class="skatelink" data-bind="text: trailName, click: $parent.clickSkate"></li>
+        </ul>
 </div>
 
 <h1 class="form_title">Suggest a New Trail</h1>

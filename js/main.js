@@ -471,12 +471,14 @@ var ViewModel = function() {
 
     console.log(currentLat);
     console.log(currentLng);
-    this.lat(currentLat);
-    this.lng(currentLng);
+    this.newTrailForm.lat(currentLat);
+    this.newTrailForm.lng(currentLng);
+    self.formMessage('');
     
     }
     //geoCode address input into form
     self.geoCodeInput = function(){
+        self.formMessage('Processing . . .');
         var address;
     var currentLat;
         var currentLng;
@@ -506,6 +508,7 @@ var ViewModel = function() {
     self.submitNewTrail = function(){
         console.log("submit new trail called");
         self.newTrailForm.submit(false);
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
         self.formMessage('Processing . . .');
         self.errorList([]);
         error_count = 0;
@@ -581,6 +584,7 @@ var ViewModel = function() {
     }
     //call to get current user location
     self.getUserLocation = function(){
+    self.formMessage('Processing . . .');
     if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(self.updatePosition);
         } 
@@ -597,8 +601,9 @@ var ViewModel = function() {
     }
     //callback to update ko observables for web service user location
     self.positionCallback = function(lat, lng){
-    this.lat(lat);
-    this.lng(lng);
+    this.newTrailForm.lat(lat);
+    this.newTrailForm.lng(lng);
+    self.formMessage('');
     }
 
     /*reset skateList to those visible on map*/
