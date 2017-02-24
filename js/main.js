@@ -506,6 +506,7 @@ var ViewModel = function() {
     self.submitNewTrail = function(){
         console.log("submit new trail called");
         self.newTrailForm.submit(false);
+        self.formMessage('Processing . . .');
         self.errorList([]);
         error_count = 0;
         console.log(self.newTrailForm.name());

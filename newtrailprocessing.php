@@ -1,5 +1,12 @@
 <?php
 
+
+
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$connection_string = 'dbname='.ltrim($dbopts["path"],'/').' host='.$dbopts["host"].' port='.$dbopts["port"].' user='.$dbopts["user"].' password='.$dbopts["pass"];
+
+$dbconn = pg_connect($connection_string) or die("Error while connecting to database.");
+
 $validated = false;
 
 $dataString = $_POST['dataString'];
@@ -46,6 +53,7 @@ $validated = false;
 }
 
 $errors = array();
+$query_array = array();
 
 if (!is_str_length_in_range_inclusive($name,5,100)){
   array_push($errors, "Length of name must be between 5 and 100 characters.");
@@ -64,6 +72,24 @@ if(!is_number_in_range_inclusive($skate_length,0,1000)){
 
 
 if($validated && empty($errors)){
+    //escaping is unnecessary in prepared queries per documentation, however as not high volume escaping as extra precaution.
+    array_push($query_array,pg_escape_string($name));
+    array_push($query_array,pg_escape_string($lat));
+    array_push($query_array,pg_escape_string($lng));
+    array_push($query_array,pg_escape_string($parking_location));
+    array_push($query_array,pg_escape_string($parking_cost));
+    array_push($query_array,pg_escape_string($skate_length));
+    array_push($query_array,pg_escape_string($skate_info));
+    array_push($query_array,pg_escape_string($group_skates));
+    array_push($query_array,pg_escape_string($web_resources));
+    array_push($query_array,pg_escape_string($email));
+    
+
+    //insert suggested skate into new skates database.
+    $sql = "INSERT INTO newskates (name, lat, lng, parking_location, parking_cost, skate_length, skate_info, group_skates, web_resources, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
+    $result = pg_prepare($dbconn, 'my_insert', $sql);
+    $result = pg_execute($dbconn, 'my_insert', $query_array) or die("Error while inserting.");    
+    pg_close($dbconn);
     $response = array(
         'error'=>null,
         'message'=> 'Trail submitted successfully.  The gnome will be reviewing shortly.');
