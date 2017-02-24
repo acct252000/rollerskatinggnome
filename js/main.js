@@ -396,13 +396,15 @@ var ViewModel = function() {
             formAddress: ko.observable('123 Main Street, Denver, CO 12345'),
             parking_location: ko.observable(),
             parking_cost: ko.observable(),
-            length: ko.observable(),
+            skate_length: ko.observable(),
             info: ko.observable(),
             group: ko.observable(),
             web: ko.observable(),
-            email: ko.observable()
+            email: ko.observable(),
+            submit: ko.observable(false)
     };
-    self.formMessage = ko.observable('form not submitted');
+    this.errorList = ko.observableArray([]);
+    self.formMessage = ko.observable('');
 
     weatherAttribString = ko.observable("Weather information provided by the National Weather Service");
     shouldShowLogo = ko.observable(true);
@@ -503,15 +505,75 @@ var ViewModel = function() {
     //submit form data from new trail to php
     self.submitNewTrail = function(){
         console.log("submit new trail called");
-        var data = ko.toJS({"data":self.newTrailForm});
-        console.log(data);
+        self.newTrailForm.submit(false);
+        self.errorList([]);
+        error_count = 0;
+        console.log(self.newTrailForm.name());
+        console.log(self.newTrailForm.name().length);
+        if(self.newTrailForm.name().length > 100 || self.newTrailForm.name().length < 6){
+                self.errorList.push({input_error:' Length of name must be between 5 and 100 characters'});
+                error_count += 1;
+        }
+        if(isNaN(self.newTrailForm.lat())){
+            self.errorList.push({input_error: 'Latitude must be numeric'});
+            error_count += 1;
+        } else if (self.newTrailForm.lat() <-90 || self.newTrailForm.lat() > 90){
+            self.errorList.push( {input_error: 'Lattitude must be between -90 and 90'});
+            error_count += 1;
+        }
+
+        if(isNaN(self.newTrailForm.lng())){
+            self.errorList.push({input_error: 'Longitude must be numeric'});
+            error_count += 1;
+        } else if (self.newTrailForm.lng() <0 || self.newTrailForm.lng() > 180){
+            self.errorList.push( {input_error: 'Longitude must be between 0 and 180'});
+            error_count += 1;
+        }
+        if(isNaN(self.newTrailForm.skate_length())){
+            self.errorList.push({input_error: 'Length must be numeric'});
+            error_count += 1;
+        } else if (self.newTrailForm.skate_length() <0 || self.newTrailForm.skate_length() > 1000){
+            self.errorList.push( {input_error: 'Length must be between 0 and 1000'});
+            error_count += 1;
+        }
+
+        if(error_count > 0){
+            return;
+        }
+
+        self.newTrailForm.submit(true);
+
+        var dataString = ko.toJS({dataString: self.newTrailForm});
+        console.log(dataString);
         $.ajax({
             url: "newtrailprocessing.php",
-            type: 'post',
-            data: data,
+            type: "POST",
+            dataType: "json",
+            data: dataString,
             success: function(response) {
+               
+                jsonResponse = '';
+                var current_error;
                 self.formMessage(response.message);
+                if(response.error === null){
+                   //reset form values to zero
+                    self.newTrailForm.name('');
+                    self.newTrailForm.lat(0.0);
+                    self.newTrailForm.lng(0.0);
+                    self.newTrailForm.formAddress('123 Main Street, Denver, CO 12345');
+                    self.newTrailForm.parking_location('');
+                    self.newTrailForm.parking_cost('');
+                    self.newTrailForm.skate_length(0.0);
+                    self.newTrailForm.info('');
+                    self.newTrailForm.group('');
+                    self.newTrailForm.web('');
+                    self.newTrailForm.email('');
+                } else {
+                    response.errors.forEach(function(item){
 
+                        self.errorList.push({input_error: item});
+                    });
+                }
             }
 
         });

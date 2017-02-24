@@ -53,12 +53,17 @@ pg_close($dbconn);
         
 </div>
 
-<h1 id="form_title">Suggest a New Trail</h1>
-<h2 data-bind="text: formMessage"></h2>
+<h1 class="form_title">Suggest a New Trail</h1>
+<span data-bind="if: formMessage">
+<h2 class="form_title" data-bind="text: formMessage"></h2>
+</span>
+<ul lass="form_title" data-bind="foreach: errorList">
+           <li class="text-danger" data-bind="text: input_error"></li>
+        </ul>
 <div id="form_detail" class="corners">
 	<form id="trail_form" action="newtrail.php"  data-bind="submit: submitNewTrail" method="POST">
 	<label for="name">Trail Name:</label><br/>
-	<input type="text" class="long_text" placeholder="Trail Name" data-bind="value: newTrailForm.email" id="name" autofocus><br/>
+	<input type="text" class="long_text" placeholder="Trail Name" data-bind="value: newTrailForm.name" id="name" autofocus><br/>
 	<label for="lat">Latitude:</label><input type="text" class="input_location" data-bind="value: newTrailForm.lat" id="lat">
         <label for="lng">Longitude:</label><input type="text" class="input_location" data-bind="value: newTrailForm.lng" id="long"><br>
 	<div id="googAddress" data-bind="if: showAForm()"><label for="formAddress">Address:</label><br>
@@ -70,8 +75,8 @@ pg_close($dbconn);
 	<input type="textarea" data-bind="value: newTrailForm.parking_location" class="form_area" id="parking_location"><br />
 	<label for="parking_cost">Cost to Park:</label><br/>
 	<input type="text" data-bind="value: newTrailForm.parking_cost" placeholder="$0.00" id="parking_cost"><br />
-	<label for="length">Trail Length (miles):</label><br />
-	<input type="text" data-bind="value: newTrailForm.length" placeholder="0" id="length"><br />
+	<label for="skate_length">Trail Length (miles):</label><br />
+	<input type="text" data-bind="value: newTrailForm.skate_length" placeholder="0" id="skate_length"><br />
 	<label for="info">Need to Know Information:</label><br />
 	<input type="textarea" data-bind="value: newTrailForm.info" rows="4" class="form_area" id="info"><br />
 	<label for="group">Schedule Group Skates:</label><br />
@@ -79,8 +84,8 @@ pg_close($dbconn);
 	<label for="web">Related Websites:</label><br />
 	<input type="textarea" data-bind="value: newTrailForm.web" rows="4" class="form_area"  id="web"><br />
 	<label for="email">Contact E-mail:</label><br />
-	<input type="text" data-bind="value: newTrailForm.email" placeholder="myemail@email.com" id="email" autocomplete="email"><br />
-	<input type="submit" value="submit" name="submit" data-bind="click: submitNewTrail"><br />
+	<input type="text" data-bind="value: newTrailForm.email" placeholder="myemail@email.com" id="email" autocomplete="email"><br /><br />
+	<input type="submit" value="Submit" name="submit" data-bind="click: submitNewTrail"><br />
 	
 
 	</form>
