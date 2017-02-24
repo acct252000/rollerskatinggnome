@@ -89,7 +89,7 @@ pg_close($dbconn);
 	</div>
      <hr>
      <div class="new_skate_link">
-    <a href="https://http://blooming-badlands-10202.herokuapp.com/newtrail.php">Suggest a New Skate!</a>
+    <a href="https://blooming-badlands-10202.herokuapp.com/newtrail.php">Suggest a New Skate!</a>
     </div>
         <div id="menu_arrow"><span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true" data-bind="click: hideMenu"></span></div>
     </nav>

@@ -66,7 +66,7 @@ pg_close($dbconn);
 
         <header>
            
-            <div> <img id="gnome" src="img/gnome.png" alt="rollerskating gnome">Rollerskating Gnome</div>
+            <div> <a href="http://blooming-badlands-10202.herokuapp.com/index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
                 <span id="weather_attribute" data-bind="text: weatherAttribString"></span></header>
             <div id="bar_detail">
 

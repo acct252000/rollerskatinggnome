@@ -42,7 +42,7 @@ pg_close($dbconn);
 </script>
         <header>
            
-            <div> <a href="index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
+            <div> <a href="http://blooming-badlands-10202.herokuapp.com/index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
                 </header>
             <div id="bar_detail">
 
