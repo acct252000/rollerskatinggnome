@@ -93,6 +93,20 @@ if($validated && empty($errors)){
     //insert suggested skate into new skates database.
     $sql = "INSERT INTO submittedskate (name, lat, lng, parking_location, parking_cost, skate_length, skate_info, group_skates, web_resources, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
     $result = pg_prepare($dbconn, 'my_insert', $sql);
+
+    if(!$result){
+      array_push($errors, "Error completing save of new trail.  Please try again later");
+      $reponse = array(
+        'error'=>"Error existed",
+        'errors'=>$errors,
+        'message'=>'Please note the following error:'
+        );
+        break 2;
+
+    }
+
+
+
     $result = pg_execute($dbconn, 'my_insert', $query_array);
 
     if(!$result){
