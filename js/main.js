@@ -1,7 +1,7 @@
-/*This file was created by Christine Stoner Udacity Student Septenber 19-20, 2016. This file supports a
-website that shows five skating trails in the Dallas area along with weather information pulled from
-weater underground through a separate js file, weatherpi.js.*/
-//model section lists variables and skate information
+/*This file was created by Christine Stoner Udacity Student. This file supports a
+website that shows kating trails along with weather information pulled from
+the national weather service through a separate js file, weatherapi.js.*/
+//model section lists variables
 var model = {
 
     "infoWindow": null,
@@ -12,345 +12,6 @@ var model = {
         },
         zoom: 11
     },
-
-    "skates": [
-
-        {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail1",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail2",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail3",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail4",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail5",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail6",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail7",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail8",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail9",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail10",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail11",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
- {
-            "location": {
-                "lat": 32.8806329,
-                "lng": -96.9312469
-            },
-            "trailName": "Campion Trail12",
-            "parkingSpot": "Birds' Fort Trail Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXIRVIN7",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
-        {
-            "location": {
-                "lat": 32.9574412,
-                "lng": -96.6762328
-            },
-            "trailName": "Test Trail",
-            "parkingSpot": "Oak Point Nature Center",
-            "length": 9,
-            "marker": null,
-            "pws": "KTXPLANO203",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
-
-        {
-            "location": {
-                "lat": 33.0574412,
-                "lng": -96.8262328
-            },
-            "trailName": "Test 2Trail",
-            "parkingSpot": "Oak Point Nature Center",
-            "length": 9,
-            "marker": null,
-            "pws": "KTXPLANO203",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
-
-        {
-            "location": {
-                "lat": 33.0574412,
-                "lng": -96.6762328
-            },
-            "trailName": "Oak Point Trail",
-            "parkingSpot": "Oak Point Nature Center",
-            "length": 9,
-            "marker": null,
-            "pws": "KTXPLANO203",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-
-  },
-        {
-            "location": {
-                "lat": 33.0223932,
-                "lng": -96.7139285
-            },
-            "trailName": "Chisholm Trail",
-            "parkingSpot": "Plano Senior Center",
-            "length": 6,
-            "marker": null,
-            "pws": "KTXRICHA43",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-  },
-        {
-            "location": {
-                "lat": 32.9256216,
-                "lng": -96.786438
-            },
-            "trailName": "White Rock Trail",
-            "parkingSpot": "Valley View Park",
-            "length": 14,
-            "marker": null,
-            "pws": "KTXDALLA304",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-  },
-        {
-            "location": {
-                "lat": 32.9972092,
-                "lng": -96.7344246
-            },
-            "trailName": "Renner Trail",
-            "parkingSpot": "Custer Park",
-            "length": 5,
-            "marker": null,
-            "pws": "KTXRICHA54",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-  },
-     {
-            "location": {
-                "lat": 32.7775222,
-                "lng": -97.1004047
-            },
-            "trailName": "River Legacy Trail",
-            "parkingSpot": "River Legacy Park",
-            "length": 7,
-            "marker": null,
-            "pws": "KTXRICHA54",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-  },
-    {
-            "location": {
-                "lat": 33.020482,
-                "lng": -96.8713641
-            },
-            "trailName": "Nob Hill Greenbelt",
-            "parkingSpot": "Branch Hollow Park",
-            "length": 5,
-            "marker": null,
-            "pws": "KTXRICHA54",
-            "temperature": null,
-            "windMph": null,
-            "windDir": null,
-            "relHumid": null
-  }
-    
-
-  ]
 };
 
 var weatherAttribString;
@@ -390,32 +51,34 @@ var ViewModel = function() {
     };
     //establish observables for new trail form
     self.newTrailForm = {
-            name: ko.observable(),
-            lat: ko.observable(0.0),
-            lng: ko.observable(0.0),
-            formAddress: ko.observable('123 Main Street, Denver, CO 12345'),
-            parking_location: ko.observable(),
-            parking_cost: ko.observable(),
-            skate_length: ko.observable(),
-            info: ko.observable(),
-            group: ko.observable(),
-            web: ko.observable(),
-            email: ko.observable(),
-            submit: ko.observable(false)
+        name: ko.observable(),
+        lat: ko.observable(0.0),
+        lng: ko.observable(0.0),
+        formAddress: ko.observable('123 Main Street, Denver, CO 12345'),
+        parking_location: ko.observable(),
+        parking_cost: ko.observable(),
+        skate_length: ko.observable(),
+        info: ko.observable(),
+        group: ko.observable(),
+        web: ko.observable(),
+        email: ko.observable(),
+        submit: ko.observable(false)
     };
+    // establish observable for errorList
     this.errorList = ko.observableArray([]);
-    self.formMessage = ko.observable('');
-
+    // establish observable for form error message
+    this.formMessage = ko.observable('');
+    //establish observable for weather message and logo
     weatherAttribString = ko.observable("Weather information provided by the National Weather Service");
     shouldShowLogo = ko.observable(true);
-   
-   
+
+
     //add all skates to initial skatelists and set current skate.
     skate_data.forEach(function(skate) {
         self.skateList.push(skate);
         self.allSkateList.push(skate);
-        if (skate_detail){
-            if(skate.id == current_skate_id){
+        if (skate_detail) {
+            if (skate.id == current_skate_id) {
                 self.currentSkate.name(skate.trailName);
                 self.currentSkate.parking_location(skate.parkingSpot);
                 self.currentSkate.parking_cost(skate.parkingCost);
@@ -423,144 +86,171 @@ var ViewModel = function() {
                 self.currentSkate.skate_info(skate.skateInfo);
                 self.currentSkate.group_skates(skate.groupSkates);
             }
-          
-            
+
+
         }
 
     });
-    if(skate_detail){
+    // if skate_detail page is displayed, assign primary picture pullled from database via php
+    if (skate_detail) {
         self.currentSkate.primaryPicture(primary_picture);
     }
-    self.updateWeatherInfo = function(){
-            skate_data.forEach(function(skate) {
-        if (skate_detail){
-            if(skate.id == current_skate_id){
-                self.currentSkate.temperature(skate.temperature);
-                self.currentSkate.windDir(skate.windDir);
-                self.currentSkate.windMph(skate.windMph);
-                self.currentSkate.relHumid(skate.relHumid);
-               
+    // update weather information for all skates from weatherapi
+    self.updateWeatherInfo = function() {
+        skate_data.forEach(function(skate) {
+            if (skate_detail) {
+                if (skate.id == current_skate_id) {
+                    self.currentSkate.temperature(skate.temperature);
+                    self.currentSkate.windDir(skate.windDir);
+                    self.currentSkate.windMph(skate.windMph);
+                    self.currentSkate.relHumid(skate.relHumid);
+
+                }
+
+
             }
-          
-            
-        }
 
-    });
-    }
-    
+        });
+    };
+
     //reset map to user input zipcode or city, state
-    self.resetMap = function(){
+    self.resetMap = function() {
         var address;
-         
-    if (this.zipCode()){
-        address = this.zipCode();
-    } 
-        geocoder.geocode({'address':address}, function(results, status){
-        if (status == 'OK'){
-        map.setCenter(results[0].geometry.location);
-                    
-    } else {
-        alert('Geocode was not successful for the following reason: ' + status)
-    }
 
-    });
+        if (this.zipCode()) {
+            address = this.zipCode();
+        }
+        geocoder.geocode({
+            'address': address
+        }, function(results, status) {
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
 
-    }
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+
+        });
+
+    };
     //callback to update latitude and longitude observables from form geocoding
-    self.updateLtLg = function(currentLat, currentLng){
+    self.updateLtLg = function(currentLat, currentLng) {
 
-    console.log(currentLat);
-    console.log(currentLng);
-    this.newTrailForm.lat(currentLat);
-    this.newTrailForm.lng(currentLng);
-    self.formMessage('');
-    
-    }
+        console.log(currentLat);
+        console.log(currentLng);
+        this.newTrailForm.lat(currentLat);
+        this.newTrailForm.lng(currentLng);
+        self.formMessage('');
+
+    };
     //geoCode address input into form
-    self.geoCodeInput = function(){
+    self.geoCodeInput = function() {
         self.formMessage('Processing . . .');
         var address;
-    var currentLat;
+        var currentLat;
         var currentLng;
-    
-         
-    if (this.formAddress()){
-        address = this.formAddress();
-        
-    } 
-        form_geocoder.geocode({'address':address}, function(results, status){
-        if (status == 'OK'){
-        console.log("status ok");
-        currentLat = results[0].geometry.location.lat();
-        currentLng = results[0].geometry.location.lng();
-        self.updateLtLg(currentLat, currentLng);
-                        
-    } else {
-        alert('Geocode was not successful for the following reason: ' + status)
-    }
 
-    });
-    
+
+        if (this.formAddress()) {
+            address = this.formAddress();
+
+        }
+        form_geocoder.geocode({
+            'address': address
+        }, function(results, status) {
+            if (status == 'OK') {
+                console.log("status ok");
+                currentLat = results[0].geometry.location.lat();
+                currentLng = results[0].geometry.location.lng();
+                self.updateLtLg(currentLat, currentLng);
+
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+
+        });
+
         this.showAForm(false);
 
-    }
+    };
     //submit form data from new trail to php
-    self.submitNewTrail = function(){
-        console.log("submit new trail called");
+    self.submitNewTrail = function() {
         self.newTrailForm.submit(false);
+        //scroll to top of form where message is displayed
         document.body.scrollTop = document.documentElement.scrollTop = 0;
+        //display processing message while waiting for results
         self.formMessage('Processing . . .');
+        /*establish error list and count; errors increase error count and add to errorList
+        error List is observable so automatically update for array*/
         self.errorList([]);
         error_count = 0;
-        console.log(self.newTrailForm.name());
-        console.log(self.newTrailForm.name().length);
-        if(self.newTrailForm.name().length > 100 || self.newTrailForm.name().length < 6){
-                self.errorList.push({input_error:' Length of name must be between 5 and 100 characters'});
-                error_count += 1;
-        }
-        if(isNaN(self.newTrailForm.lat())){
-            self.errorList.push({input_error: 'Latitude must be numeric'});
-            error_count += 1;
-        } else if (self.newTrailForm.lat() <-90 || self.newTrailForm.lat() > 90){
-            self.errorList.push( {input_error: 'Lattitude must be between -90 and 90'});
+        //validate name of trail is between 5 and 100 characters
+        if (self.newTrailForm.name().length > 100 || self.newTrailForm.name().length < 6) {
+            self.errorList.push({
+                input_error: ' Length of name must be between 5 and 100 characters'
+            });
             error_count += 1;
         }
-
-        if(isNaN(self.newTrailForm.lng())){
-            self.errorList.push({input_error: 'Longitude must be numeric'});
+        //validate latitude is a number between -90 and 90 inclusive
+        if (isNaN(self.newTrailForm.lat())) {
+            self.errorList.push({
+                input_error: 'Latitude must be numeric'
+            });
             error_count += 1;
-        } else if (self.newTrailForm.lng() <0 || self.newTrailForm.lng() > 180){
-            self.errorList.push( {input_error: 'Longitude must be between 0 and 180'});
-            error_count += 1;
-        }
-        if(isNaN(self.newTrailForm.skate_length())){
-            self.errorList.push({input_error: 'Length must be numeric'});
-            error_count += 1;
-        } else if (self.newTrailForm.skate_length() <0 || self.newTrailForm.skate_length() > 1000){
-            self.errorList.push( {input_error: 'Length must be between 0 and 1000'});
+        } else if (self.newTrailForm.lat() < -90 || self.newTrailForm.lat() > 90) {
+            self.errorList.push({
+                input_error: 'Lattitude must be between -90 and 90'
+            });
             error_count += 1;
         }
-
-        if(error_count > 0){
+        //validate longtitude is a number between 0 and 180 inclusive
+        if (isNaN(self.newTrailForm.lng())) {
+            self.errorList.push({
+                input_error: 'Longitude must be numeric'
+            });
+            error_count += 1;
+        } else if (self.newTrailForm.lng() < 0 || self.newTrailForm.lng() > 180) {
+            self.errorList.push({
+                input_error: 'Longitude must be between 0 and 180'
+            });
+            error_count += 1;
+        }
+        //validate trail length is numeric between 1 and 100 miles
+        if (isNaN(self.newTrailForm.skate_length())) {
+            self.errorList.push({
+                input_error: 'Length must be numeric'
+            });
+            error_count += 1;
+        } else if (self.newTrailForm.skate_length() < 0 || self.newTrailForm.skate_length() > 1000) {
+            self.errorList.push({
+                input_error: 'Length must be between 0 and 1000'
+            });
+            error_count += 1;
+        }
+        //fail submit process if validation error exists
+        if (error_count > 0) {
             return;
         }
-
+        //set submit to True for submittal
         self.newTrailForm.submit(true);
-
-        var dataString = ko.toJS({dataString: self.newTrailForm});
-        console.log(dataString);
+        //encode newTrailForm observables to JSON for passing to PHP
+        var dataString = ko.toJS({
+            dataString: self.newTrailForm
+        });
+        //send data to PHP via ajax
         $.ajax({
             url: "newtrailprocessing.php",
             type: "POST",
             dataType: "json",
             data: dataString,
             success: function(response) {
-               
+
                 jsonResponse = '';
                 var current_error;
                 self.formMessage(response.message);
-                if(response.error === null){
-                   //reset form values to zero
+                //reset form if submit successful
+                if (response.error === null) {
+                    //reset form values to zero
                     self.newTrailForm.name('');
                     self.newTrailForm.lat(0.0);
                     self.newTrailForm.lng(0.0);
@@ -573,42 +263,44 @@ var ViewModel = function() {
                     self.newTrailForm.web('');
                     self.newTrailForm.email('');
                 } else {
-                    response.errors.forEach(function(item){
-
-                        self.errorList.push({input_error: item});
+                    response.errors.forEach(function(item) {
+                        //display errors if submit not successful
+                        self.errorList.push({
+                            input_error: item
+                        });
                     });
                 }
             }
 
         });
-    }
+    };
     //call to get current user location
-    self.getUserLocation = function(){
-    self.formMessage('Processing . . .');
-    if (navigator.geolocation) {
+    self.getUserLocation = function() {
+        self.formMessage('Processing . . .');
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(self.updatePosition);
-        } 
+        }
 
 
 
-    }
+    };
     //callback to get user location from web service
-    self.updatePosition = function(position){
-    webLat = position.coords.latitude;
-    webLng = position.coords.longitude;
-    self.positionCallback(webLat, webLng);
+    self.updatePosition = function(position) {
+        webLat = position.coords.latitude;
+        webLng = position.coords.longitude;
+        self.positionCallback(webLat, webLng);
 
-    }
+    };
     //callback to update ko observables for web service user location
-    self.positionCallback = function(lat, lng){
-    this.newTrailForm.lat(lat);
-    this.newTrailForm.lng(lng);
-    self.formMessage('');
-    }
+    self.positionCallback = function(lat, lng) {
+        this.newTrailForm.lat(lat);
+        this.newTrailForm.lng(lng);
+        self.formMessage('');
+    };
 
     /*reset skateList to those visible on map*/
     self.filterSkateLocation = function() {
-        
+
         self.skateList.removeAll();
         skate_data.forEach(function(skate) {
             if (skate.lat > sw.lat() && skate.lat < ne.lat() && skate.lng < ne.lng() && skate.lng > sw.lng()) {
@@ -683,8 +375,8 @@ var ViewModel = function() {
     self.filteredSkates = ko.computed(function() {
         var filter = this.filter().toLowerCase();
         if (!filter) {
-         
-          
+
+
             return this.skateList();
 
         } else {
@@ -698,8 +390,8 @@ var ViewModel = function() {
     self.allFilteredSkates = ko.computed(function() {
         var allFilter = this.allFilter().toLowerCase();
         if (!allFilter) {
-         
-          
+
+
             return;
 
         } else {
@@ -717,7 +409,7 @@ var ViewModel = function() {
     self.hideMenu = function() {
         this.showNavBar(false);
     };
-  //hide navigation menu
+    //hide navigation menu
     self.showAddressForm = function() {
         this.showAForm(true);
     };
@@ -734,13 +426,13 @@ var sw;
 var currentViewModel = new ViewModel();
 
 //set Timeout function to return error message if google is not available
-if (!skate_detail){
-var mapsTimeout = setTimeout(function() {
-    if (!window.google || !window.google.maps) {
-        var element = document.getElementById('map');
-        element.innerHTML = 'So sorry, the map did not load. Please refresh to try again.  Peace, skate, love my brother or sister.';
-    }
-}, 5000);
+if (!skate_detail) {
+    var mapsTimeout = setTimeout(function() {
+        if (!window.google || !window.google.maps) {
+            var element = document.getElementById('map');
+            element.innerHTML = 'So sorry, the map did not load. Please refresh to try again.  Peace, skate, love my brother or sister.';
+        }
+    }, 5000);
 }
 
 /*initialize google map passing in map coordinates from model and set markers based on information
@@ -748,17 +440,20 @@ in skate_data*/
 function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), model.mapCoordinates);
-    geocoder = new google.maps.Geocoder()
-    map.addListener('bounds_changed', function(){
+    geocoder = new google.maps.Geocoder();
+    map.addListener('bounds_changed', function() {
         bounds = map.getBounds();
         ne = bounds.getNorthEast();
         sw = bounds.getSouthWest();
-    currentViewModel.filterSkateLocation();
+        currentViewModel.filterSkateLocation();
         console.log("bounds changed fired here!");
     });
     var markers = [];
     model.infoWindow = new google.maps.InfoWindow();
-    var latlng = {lat: 0, lng: 0};
+    var latlng = {
+        lat: 0,
+        lng: 0
+    };
     skate_data.forEach(function(skate) {
         latlng.lat = skate.lat;
         latlng.lng = skate.lng;
@@ -785,13 +480,13 @@ function initMap() {
     clearTimeout(mapsTimeout);
 
 }
-
+//initialize map 
 function initMapForm() {
 
     form_geocoder = new google.maps.Geocoder();
-   console.log("initMapForm called");
-    
-  
+    console.log("initMapForm called");
+
+
 
 }
 
@@ -824,7 +519,7 @@ var view = {
         var currentWindDir;
         var currentRelativeHumidity;
         var skateLength;
-      
+
 
         skate_data.forEach(function(skate) {
 
@@ -835,7 +530,7 @@ var view = {
                 currentRelativeHumidity = skate.relHumid;
                 skateLength = skate.length;
                 skate_number = skate.id;
-                
+
 
 
             }
@@ -848,7 +543,7 @@ var view = {
         if (infoWindow.marker != marker) {
             infoWindow.marker = marker;
             //infoWindow.setContent('<h5>' + marker.title + '</h5>');
-            infoWindow.setContent('<b><a href="traildetail.php?skate='+ skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
+            infoWindow.setContent('<b><a href="traildetail.php?skate=' + skate_number + '">' + marker.title + '</b></a><br>Length: ' + skateLength + ' miles<br>' + htmlWindowString);
             infoWindow.open(map, marker);
 
             infoWindow.addListener('closeclick', function() {
