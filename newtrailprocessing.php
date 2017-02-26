@@ -1,11 +1,16 @@
 <?php
 
 
+$errors = array();
 
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $connection_string = 'dbname='.ltrim($dbopts["path"],'/').' host='.$dbopts["host"].' port='.$dbopts["port"].' user='.$dbopts["user"].' password='.$dbopts["pass"];
 
 $dbconn = pg_connect($connection_string) or die("Error while connecting to database.");
+
+if (!$dbconn){
+  array_push($errors, "Error connecting to database");
+}
 
 $validated = false;
 
@@ -88,7 +93,19 @@ if($validated && empty($errors)){
     //insert suggested skate into new skates database.
     $sql = "INSERT INTO submittedskates (name, lat, lng, parking_location, parking_cost, skate_length, skate_info, group_skates, web_resources, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
     $result = pg_prepare($dbconn, 'my_insert', $sql);
-    $result = pg_execute($dbconn, 'my_insert', $query_array) or die("Error while inserting.");    
+    $result = pg_execute($dbconn, 'my_insert', $query_array);
+
+    if(!$result){
+      $reponse = array(
+        array_push($errors, "Error saving new trail.  Please try again later");
+        'error'=>"Error existed",
+        'errors'=>$errors,
+        'message'=>'Please note the following error:'
+        );
+        break 2;
+
+    }
+  
     pg_close($dbconn);
     $response = array(
         'error'=>null,
