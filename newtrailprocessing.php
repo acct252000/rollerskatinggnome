@@ -1,6 +1,6 @@
 <?php
 
-//establsih array to hold error messages
+//establish array to hold error messages
 $errors = array();
 //connect to database
 $dbopts = parse_url(getenv('DATABASE_URL'));
