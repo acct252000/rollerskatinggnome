@@ -93,7 +93,7 @@ if($validated && empty($errors)){
     
 
     //insert suggested skate into new skates database.
-    $sql = "INSERT INTO submittedskate (name, lat, lng, parking_location, parking_cost, skate_length, skate_info, group_skates, web_resources, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
+    $sql = "INSERT INTO submittedskates (name, lat, lng, parking_location, parking_cost, skate_length, skate_info, group_skates, web_resources, email) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)";
     $result = pg_prepare($dbconn, 'my_insert', $sql);
     $result = pg_execute($dbconn, 'my_insert', $query_array);
     // add error if insert statement fails
