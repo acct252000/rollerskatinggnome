@@ -96,8 +96,8 @@ if($validated && empty($errors)){
     $result = pg_execute($dbconn, 'my_insert', $query_array);
 
     if(!$result){
+      array_push($errors, "Error saving new trail.  Please try again later");
       $reponse = array(
-        array_push($errors, "Error saving new trail.  Please try again later");
         'error'=>"Error existed",
         'errors'=>$errors,
         'message'=>'Please note the following error:'
