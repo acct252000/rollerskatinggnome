@@ -26,6 +26,8 @@ function loadData() {
                if (apiResponse.Date.slice(-1) == 'T') {
                     skate.temperature = apiResponse.Temp;
                     skate.windMph = apiResponse.Winds;
+                    console.log(apiResponse.Windd);
+                    console.log(apiResponse);
             numberWindDir = Number(apiResponse.Windd);
             if (numberWindDir == 0){
             skate.windDir = "calm";
