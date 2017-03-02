@@ -67,7 +67,7 @@ pg_close($dbconn);
 <header>
 <!-- header bar with search all skates filter -->
     <div>
-        <a href="http://blooming-badlands-10202.herokuapp.com/index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome
+        <a href="http://www.rollerskatinggnome.com"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome
     </div>
     <span id="weather_attribute" data-bind="text: weatherAttribString"></span>
 </header>

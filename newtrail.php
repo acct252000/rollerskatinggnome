@@ -43,7 +43,7 @@ pg_close($dbconn);
 <header>
 <!-- header including search field to filter on all skates -->
     <div>
-        <a href="http://blooming-badlands-10202.herokuapp.com/index.php"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
+        <a href="http://www.rollerskatinggnome.com"><img id="gnome" src="img/gnome.png" alt="rollerskating gnome"></a>Rollerskating Gnome</div>
 </header>
 <div id="bar_detail">
 
