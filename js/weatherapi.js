@@ -27,12 +27,13 @@ function loadData() {
                     skate.temperature = apiResponse.Temp;
                     skate.windMph = apiResponse.Winds;
                     console.log(apiResponse.Windd);
-                    console.log(apiResponse);
             numberWindDir = Number(apiResponse.Windd);
+            console.log(numberWindDir);
             if (numberWindDir == 0){
             skate.windDir = "calm";
             } else if (numberWindDir >340 && numberWindDir < 24) {
             skate.windDir = "N";
+            console.log(skate.windDir);
             } else if (numberWindDir >23 && numberWindDir < 70) {
             skate.windDir = "NE";
             } else if (numberWindDir >69 && numberWindDir < 115) {
