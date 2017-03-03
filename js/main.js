@@ -136,8 +136,7 @@ var ViewModel = function() {
     //callback to update latitude and longitude observables from form geocoding
     self.updateLtLg = function(currentLat, currentLng) {
 
-        console.log(currentLat);
-        console.log(currentLng);
+        
         this.newTrailForm.lat(currentLat);
         this.newTrailForm.lng(currentLng);
         self.formMessage('');
@@ -159,7 +158,7 @@ var ViewModel = function() {
             'address': address
         }, function(results, status) {
             if (status == 'OK') {
-                console.log("status ok");
+                
                 currentLat = results[0].geometry.location.lat();
                 currentLng = results[0].geometry.location.lng();
                 self.updateLtLg(currentLat, currentLng);
@@ -358,7 +357,7 @@ var ViewModel = function() {
         var skateNames = [];
         self.filteredSkates().forEach(function(skate) {
             skateNames.push(skate.trailName);
-            console.log(skateNames);
+            
         });
         skate_data.forEach(function(skate) {
             if (skateNames.indexOf(skate.trailName) > -1) {
@@ -446,7 +445,7 @@ function initMap() {
         ne = bounds.getNorthEast();
         sw = bounds.getSouthWest();
         currentViewModel.filterSkateLocation();
-        console.log("bounds changed fired here!");
+        
     });
     var markers = [];
     model.infoWindow = new google.maps.InfoWindow();
@@ -484,7 +483,7 @@ function initMap() {
 function initMapForm() {
 
     form_geocoder = new google.maps.Geocoder();
-    console.log("initMapForm called");
+    
 
 
 
@@ -572,7 +571,7 @@ var view = {
             currentTempString = 'Temperature: ' + currentTemp + '<br>';
         }
         if (currentWindMph) {
-            currentWindMphString = 'Wind:' + currentWindMph + ' MPH ';
+            currentWindMphString = 'Wind: ' + currentWindMph + ' MPH ';
         }
         if (currentWindDir) {
             currentWindDirString = currentWindDir + '<br>';
